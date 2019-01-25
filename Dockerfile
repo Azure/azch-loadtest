@@ -1,5 +1,10 @@
-FROM golang
-
+FROM golang as build-env
 RUN go get -u github.com/rakyll/hey
 
-ENTRYPOINT ["hey"]
+FROM debian:stretch-slim
+
+WORKDIR /app
+COPY --from=build-env /go/bin/hey /app
+COPY loadtest.sh /app
+
+ENTRYPOINT ["/app/loadtest.sh"]
