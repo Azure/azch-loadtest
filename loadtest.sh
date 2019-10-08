@@ -6,15 +6,15 @@ echo "**************************************************************************
 
 if [ -z "$1" ]
 then
-  echo "No SERVICE_IP was passed as a parameter, assuming it is passed as environment variable"
+  echo "No SERVICE_ENDPOINT was passed as a parameter, assuming it is passed as environment variable"
 else
-  echo "SERVICE_IP was passed as a parameter"
-  export SERVICE_IP=$1
+  echo "SERVICE_ENDPOINT was passed as a parameter"
+  export SERVICE_ENDPOINT=$1
 fi
 
 export CONTENT_TYPE="Content-Type: application/json"
 export PAYLOAD='{"EmailAddress": "email@domain.com", "Product": "prod-1", "Total": 100}'
-export ENDPOINT=http://$SERVICE_IP/v1/order
+export ENDPOINT=$SERVICE_ENDPOINT/v1/order
 
 echo "POST $ENDPOINT"
 echo $CONTENT_TYPE
