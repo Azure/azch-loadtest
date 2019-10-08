@@ -1,7 +1,7 @@
 # Usage
 
 ```sh
-docker run --rm -it azch/loadtest <public ip of order capture service>
+docker run --rm -it azch/loadtest http://<public ip of order capture service>
 ```
 
 To run this using Azure Container Instances
